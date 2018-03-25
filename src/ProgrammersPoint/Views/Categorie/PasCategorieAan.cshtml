@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Categorie aanpassen";
+}
+
+@model Categorie
+
+@if (Model == null)
+{
+    @await Component.InvokeAsync("CategorieList")
+}
+else
+{
+    <div class="container">
+        <h1>Categorie aanpassen</h1>
+
+        <form asp-controller="Categorie" asp-action="PasCategorieAan" asp-antiforgery="true">
+            <div class="form-group">
+                <label asp-for="Naam" for="categorienaam">Naam</label>
+                <input asp-for="Naam" type="text" class="form-control" id="categorienaam" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Omschrijving" for="categorie-omschrijving">Omschrijving</label>
+                <textarea asp-for="Omschrijving" rows="5" class="form-control" id="categorie-omschrijving"></textarea>
+            </div>
+            <input asp-for="CategorieWaarde" type="hidden">
+
+            <button class="btn btn-primary" type="submit">Post aanpassen</button>
+        </form>
+    </div>
+}
+
+

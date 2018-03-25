@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Posts";
+}
+@model ProgrammersPoint.ViewModels.Posts.ZoektermViewModel
+
+<div class="row zoekfunctie">
+    <h1 class="post-header">Alle geüploade posts</h1>
+    <form class="form-inline" asp-controller="Posts" asp-action="ZoekPostOpNaam" asp-antiforgery="true">
+                
+            <label asp-for="Zoekterm" for="zoekterm">Zoekterm</label>
+            <input asp-for="Zoekterm" type="search" class="form-control" id="zoekterm"/>
+            <button class="btn btn-primary" type="submit">Zoek</button>
+    </form>
+    @if (User.HasClaim("Beheerder", "true"))
+    {
+        <a class="button-opstellen-post btn btn-primary pull-right" asp-controller="Posts" asp-action="StelPostOp">Stel nieuwe post op</a>
+    }
+</div>
+
+@await Component.InvokeAsync("AllePostsList")

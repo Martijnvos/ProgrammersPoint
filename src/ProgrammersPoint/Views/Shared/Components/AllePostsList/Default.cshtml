@@ -1,0 +1,19 @@
+﻿@using System.Collections.Generic
+@model List<Post>
+
+@foreach (Post post in Model)
+{
+    <div class="row card post-item" onclick="location.href='@Url.Action("Post", "Posts", new { id = @post.PostId })'">
+        <div class="container">
+            @if (User.HasClaim("Beheerder", "true"))
+            {
+                <a asp-controller="Posts" asp-action="VerwijderPost" asp-route-postId="@post.PostId" class="btn btn-danger pull-right verwijder-post-button">Verwijder</a>
+            }
+            <h4><b>@post.Naam</b></h4>
+            <p>@post.BeschrijvingTaal</p>
+            <p>Postversie: @post.PostVersie</p>
+            <p>Taalversie: @post.TaalVersie</p>
+            <p>Laatst bijgewerkt: @post.LaatstGeüpdatet</p>
+        </div>
+    </div>
+}

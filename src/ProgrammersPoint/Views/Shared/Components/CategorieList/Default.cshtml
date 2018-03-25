@@ -1,0 +1,19 @@
+﻿@using System.Collections.Generic
+@model List<Categorie>
+
+<div class="container">
+    @foreach (Categorie categorie in Model)
+    {
+        if (User.HasClaim("Beheerder", "true"))
+        {
+            <a class="verwijder-categorie-button btn btn-danger pull-right" asp-controller="Categorie" asp-action="VerwijderCategorie" asp-route-categorieNaam="@categorie.Naam">Verwijder</a>
+        }
+
+        <div class="row card post-item" onclick="location.href='@Url.Action("PasCategorieAan", "Categorie", new {naam = @categorie.Naam})'">
+            <div class="container">
+                <h4><b>@categorie.Naam</b></h4>
+                <p>@categorie.Omschrijving</p>
+            </div>
+        </div>
+    }
+</div>

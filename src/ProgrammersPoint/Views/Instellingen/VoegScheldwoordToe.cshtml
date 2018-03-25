@@ -1,0 +1,14 @@
+﻿@model Scheldwoord
+
+<div class="container">
+    <h1>Scheldwoord toevoegen</h1> <br />
+
+    <form asp-controller="Instellingen" asp-action="VoegScheldwoordToe" asp-antiforgery="true">
+        <div class="form-group">
+            <label asp-for="Woord" for="scheldwoord">Woord</label>
+            <input class="form-control" asp-for="Woord" type="text" id="scheldwoord" />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Scheldwoord toevoegen</button>
+    </form>
+</div>

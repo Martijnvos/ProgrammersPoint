@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Post opstellen";
+}
+
+@using System
+@model PostStelPostOpViewModel
+
+<div class="container">
+    <h1>Post opstellen</h1>
+
+    <form asp-controller="Posts" asp-action="MaakPostAan" asp-antiforgery="true">
+        <div class="form-group">
+            <label asp-for="Categorie" for="categorie">Categorie</label>
+            <select asp-for="Categorie" class="form-control" id="categorie">
+                @foreach (Categorieën taal in Enum.GetValues(typeof(Categorieën)))
+                {
+                    <option value="@taal.ToString()">@taal.ToString()</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Naam" for="postnaam">Naam</label>
+            <input asp-for="Naam" type="text" class="form-control" id="postnaam" />
+        </div>
+        <div class="form-group">
+            <label asp-for="BeschrijvingTaal" for="postbeschrijving">Beschrijving</label>
+            <textarea asp-for="BeschrijvingTaal" rows="5" class="form-control" id="postbeschrijving"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="MoeilijkheidsgraadOnderwerp">Moeilijkheidsgraad</label>
+            <div>
+                @for (var i = 1; i < 6; i++)
+                {
+                    <label  class="radio-inline" for="moeilijkheidsgraad-@i">
+                        <input asp-for="MoeilijkheidsgraadOnderwerp" value="@i" type="radio" id="moeilijkheidsgraad-@i">@i
+                    </label>
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaalVersie" for="taalversie">Taalversie</label>
+            <input asp-for="TaalVersie" class="form-control" type="text" id="taalversie"/>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Post aanmaken</button>
+    </form>
+</div>

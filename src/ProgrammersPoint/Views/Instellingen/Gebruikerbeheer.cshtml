@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Gebruikers beheren";
+}
+
+@using System.Collections.Generic
+@model List<Gebruiker>
+
+<div class="container">
+    <h3>Huidige gebruikers</h3>
+    @if (Model != null)
+    {
+        foreach (Gebruiker gebruiker in Model)
+        {
+            <hr />
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Naam: @gebruiker.Gebruikersnaam</p>
+                    <p>Functie: @gebruiker.Functie</p>
+                </div>
+                <div class="col-lg-6">
+                    @if (gebruiker.Functie != Functie.Beheerder)
+                    {
+                        <div class="row">
+                            <a class="gebruiker-beheerrechten-button btn btn-success pull-right" asp-controller="Instellingen" asp-action="GeefGebruikerBeheerRechten" asp-route-gebruikerId="@gebruiker.GebruikerId">Geef beheerrechten</a>
+                        </div>
+                    }
+                    <div class="row">
+                        <a class="verwijder-gebruiker-button btn btn-danger pull-right" asp-controller="Instellingen" asp-action="VerwijderGebruiker" asp-route-gebruikersnaam="@gebruiker.Gebruikersnaam">Verwijder</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+</div>

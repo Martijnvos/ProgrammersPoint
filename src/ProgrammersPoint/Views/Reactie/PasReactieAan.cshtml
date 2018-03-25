@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Reactie aanpassen";
+}
+@using ProgrammersPoint.ViewModels.Reactie;
+@model ReageerOpReviewViewModel
+
+<div class="container">
+    <h1>Reactie aanpassen</h1>
+
+    <form asp-controller="Reactie" asp-action="PasReactieAan" asp-antiforgery="true">
+        <div class="form-group">
+            <label asp-for="Reactie.Inhoud" for="inhoud">Inhoud reactie</label>
+            <textarea asp-for="Reactie.Inhoud" rows="5" class="form-control" id="inhoud"></textarea>
+        </div>
+
+        <input asp-for="Reactie.GebruikerId" type="hidden">
+        <input asp-for="Reactie.ReactieId" type="hidden"/>
+        <input asp-for="Reactie.ReactieOpReactieId" type="hidden">
+        <input asp-for="PostId" type="hidden" />
+
+        <button class="btn btn-primary" type="submit">Pas aan</button>
+    </form>
+</div>

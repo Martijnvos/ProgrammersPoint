@@ -1,0 +1,17 @@
+﻿.form-control {
+    width: 75%;
+}
+
+.gebruikersnaam-row,
+.wachtwoord-row,
+.emailadres-row {
+    margin-bottom: 15px;
+}
+
+.uitgelogd-text {
+    margin-bottom: 25px;
+}
+
+.homepage-button {
+    margin-bottom: 15px;
+}

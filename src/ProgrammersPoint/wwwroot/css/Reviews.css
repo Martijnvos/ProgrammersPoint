@@ -1,0 +1,27 @@
+﻿.rating-upvote,
+.rating-downvote {
+    height: 25px;
+    margin-right: 5px;
+}
+
+.image-link-upvote:hover,
+.image-link-downvote:hover {
+    text-decoration: none;
+}
+
+.rating-upvote-label,
+.rating-downvote-label {
+    margin-right: 10px;
+}
+
+.tab-panel {
+    margin-bottom: 40px;
+}
+
+.tab-content {
+    margin-top: 15px; 
+}
+
+.review-aanpassen-button {
+    margin-right: 20px;
+}

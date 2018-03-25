@@ -1,0 +1,28 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = Model.Naam;
+}
+
+@if(User.HasClaim("Beheerder", "true"))
+{
+    <a class="btn btn-primary pull-right" asp-controller="Posts" asp-action="PasPostAan" asp-route-id="@Model.PostId">Pas post aan</a>
+}
+
+<div class="container">
+    <h4><b>@Model.Naam</b></h4>
+    <p>@Model.BeschrijvingTaal</p>
+    <p>Postversie: @Model.PostVersie</p>
+    <p>Taalversie: @Model.TaalVersie</p>
+    <p>Laatst bijgewerkt: @Model.LaatstGeüpdatet</p>
+</div>
+
+<section class="reviews">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a class="btn btn-primary pull-right" asp-controller="Review" asp-action="ReviewAanmaken" asp-route-postId="@Model.PostId">Review opstellen</a>
+    }
+    <div class="container">
+        @await Component.InvokeAsync("ReviewsOnderPost", new {post = Model})
+    </div>
+</section>

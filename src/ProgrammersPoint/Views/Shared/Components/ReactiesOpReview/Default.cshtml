@@ -1,0 +1,82 @@
+﻿@using ProgrammersPoint.ViewModels.Reactie;
+@model ReactieViewModel
+
+<section class="comment-list">
+    
+    @foreach (Reactie reactie in Model.ReactieLijst)
+    {
+        if (reactie.ReactieOpReactieId == null)
+        {
+            <article class="row">
+                <div class="col-md-2 col-sm-2 hidden-xs">
+                    <figure class="thumbnail">
+                        <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg"/>
+                        <figcaption class="text-center">@Model.Gebruikers.Find(x => x.GebruikerId == reactie.GebruikerId).Gebruikersnaam</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-10 col-sm-10">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <header class="text-left">
+                                <div>
+                                    <i class="fa fa-user"></i> @Model.Gebruikers.Find(x => x.GebruikerId == reactie.GebruikerId).Gebruikersnaam
+                                </div>
+                                <time><i class="fa fa-clock-o"></i> @reactie.Datum.ToString("dd'/'MM'/'yyyy")</time>
+                            </header>
+                            <div class="comment-post">
+                                <p>@reactie.Inhoud</p>
+                            </div>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Reactie" asp-action="Reageer" asp-route-reactieId="@reactie.ReactieId" asp-route-postId="@Model.Review.PostId" class="btn btn-default btn-sm pull-right"><i class="fa fa-reply"></i> Reageer</a>
+                                <a asp-controller="ReviewWaardering" asp-action="InsertOrUpdateReviewWaardering" asp-route-postId="@Model.Review.PostId"
+                                   asp-route-reviewId="@Model.Review.ReviewId" asp-route-upvote="false" asp-route-downvote="false" asp-route-report="true"
+                                   class="btn btn-danger btn-sm">Report</a>
+                                <a asp-controller="Reactie" asp-action="PasReactieAan" asp-route-postId="@Model.Review.PostId"
+                                   asp-route-reactieId="@reactie.ReactieId" class="btn btn-primary btn-sm">Pas reactie aan</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </article>
+        }
+        else
+        {
+            <article class="row">
+                <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                    <figure class="thumbnail">
+                        <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+                        <figcaption class="text-center">@Model.Gebruikers.Find(x => x.GebruikerId == reactie.GebruikerId).Gebruikersnaam</figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading right">Reactie</div>
+                        <div class="panel-body">
+                            <header class="text-left">
+                                <div>
+                                    <i class="fa fa-user"></i> @Model.Gebruikers.Find(x => x.GebruikerId == reactie.GebruikerId).Gebruikersnaam
+                                </div>
+                                <time><i class="fa fa-clock-o"></i> @reactie.Datum.ToString("dd'/'MM'/'yyyy")</time>
+                            </header>
+                            <div class="comment-post">
+                                <p>@reactie.Inhoud</p>
+                            </div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-controller="Reactie" asp-action="Reageer" asp-route-reactieId="@reactie.ReactieId" asp-route-postId="@Model.Review.PostId" class="btn btn-default btn-sm pull-right"><i class="fa fa-reply"></i> Reageer</a>
+                                <a asp-controller="ReviewWaardering" asp-action="InsertOrUpdateReviewWaardering" asp-route-postId="@Model.Review.PostId"
+                                   asp-route-reviewId="@Model.Review.ReviewId" asp-route-upvote="false" asp-route-downvote="false" asp-route-report="true"
+                                   class="btn btn-danger btn-sm">Report</a>
+                                   //TODO check of de aan te passen reactie van die persoon is.
+                                <a asp-controller="Reactie" asp-action="PasReactieAan" asp-route-postId="@Model.Review.PostId"
+                                   asp-route-reactieId="@reactie.ReactieId" class="btn btn-primary btn-sm">Pas reactie aan</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </article>
+        }
+    }
+</section>

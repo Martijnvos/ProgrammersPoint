@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section id="welkomst-tekst">
+    <h1>Welkom @User.Identity.Name!</h1>
+</section>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <section id="gebruiker-specifieke-posts">
+        @await Component.InvokeAsync("PostAlgoritme")
+    </section>
+}
+
+<section id="alle-posts">
+    <h4>Alle posts op een rijtje</h4>
+    <div class="container">
+        @await Component.InvokeAsync("AllePostsList")
+    </div>
+</section>

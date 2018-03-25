@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Zoekresultaten";
+}
+
+@using System.Collections.Generic
+@model List<Post>
+    
+@if (Model == null)
+{
+    <h1>Geen posts gevonden voor je zoekopdracht :(</h1>
+}
+else
+{
+    <h1>Resultaten:</h1>
+    if (Model.Count == 1)
+    {
+         <p>Uw zoekopdracht heeft @Model.Count resultaat opgeleverd.</p>
+    }
+    else
+    {
+        <p>Uw zoekopdracht heeft @Model.Count resultaten opgeleverd.</p>
+    }
+
+    @await Component.InvokeAsync("ZoekTermMatchendePosts", Model);
+}

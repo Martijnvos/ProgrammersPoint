@@ -1,0 +1,79 @@
+﻿@using System.Collections.Generic
+@model List<Post>
+
+@if (Model.Count > 2)
+{
+    <h4>Wellicht interessante posts:</h4>
+    switch (Model.Count)
+    {
+        case 3:
+            <div class="row">
+                @foreach (Post post in Model)
+                {
+                    <div class="col-lg-4 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @post.PostId })'">
+                        <h4><b>@post.Naam</b></h4>
+                        <p>@post.BeschrijvingTaal</p>
+                    </div>
+                }
+            </div>
+            break;
+        case 4:
+            for (var i = 0; i < 2; i++)
+            {
+                <div class="row">
+                    @for (var j = 0; j < 2; j++)
+                    {
+                        <div class="col-lg-6 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @Model[i + j].PostId })'">
+
+                            <h4><b>@Model[i + j].Naam</b></h4>
+                            <p>@Model[i + j].BeschrijvingTaal</p>
+
+                        </div>
+                    }
+                </div>
+            }
+            break;
+        case 5:
+            <div class="row">
+                @for (var i = 0; i < 2; i++)
+                {
+                    <div class="col-lg-6 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @Model[i].PostId })'">
+                        <h4><b>@Model[i].Naam</b></h4>
+                        <p>@Model[i].BeschrijvingTaal</p>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                @for (var j = 0; j < 3; j++)
+                {
+                    <div class="col-lg-4 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @Model[2 + j].PostId })'">
+                        <h4><b>@Model[2 + j].Naam</b></h4>
+                        <p>@Model[2 + j].BeschrijvingTaal</p>
+                    </div>
+                }
+            </div>
+
+            break;
+        case 6:
+            <div class="row">
+                @for (var i = 0; i < 6; i++)
+                {
+                    if (i < 4)
+                    {
+                        <div class="col-lg-4 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @Model[i].PostId })'">
+                            <h4><b>@Model[i].Naam</b></h4>
+                            <p>@Model[i].BeschrijvingTaal</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-4 card" onclick="location.href='@Url.Action("Post", "Posts", new { id = @Model[i].PostId })'">
+                            <h4><b>@Model[i].Naam</b></h4>
+                            <p>@Model[i].BeschrijvingTaal</p>
+                        </div>
+                    }
+                }
+            </div>
+            break;
+    }
+}

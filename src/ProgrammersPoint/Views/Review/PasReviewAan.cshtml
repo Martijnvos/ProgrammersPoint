@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Review aanpassen";
+}
+@model ProgrammersPoint.ViewModels.Review.ReviewViewModel
+
+<div class="container">
+    <h1>Review aanpassen</h1>
+
+    <form asp-controller="Review" asp-action="PasReviewAan" asp-antiforgery="true">
+        <div class="form-group">
+            <label asp-for="Review.Titel" for="titel">Titel</label>
+            <input asp-for="Review.Titel" type="text" class="form-control" id="titel" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Review.Reviewtekst" for="reviewtekst">Reviewtekst</label>
+            <textarea asp-for="Review.Reviewtekst" rows="5" class="form-control" id="reviewtekst"></textarea>
+        </div>
+        <input asp-for="PostId" type="hidden" />
+        <input asp-for="Review.PostId" type="hidden" />
+        <input asp-for="Review.GebruikerId" type="hidden" />
+        <input asp-for="Review.ReviewId" type="hidden" />
+
+        <button class="btn btn-primary" type="submit">Review aanpassen</button>
+    </form>
+</div>

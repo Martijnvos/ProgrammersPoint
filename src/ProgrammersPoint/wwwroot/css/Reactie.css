@@ -1,0 +1,35 @@
+﻿@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+/*Comment List styles*/
+.comment-list .row {
+    margin-bottom: 0;
+}
+.comment-list .panel .panel-heading {
+    padding: 4px 15px;
+    position: absolute;
+    border:none;
+    /*Panel-heading border radius*/
+    border-top-right-radius:0;
+    top: 1px;
+}
+.comment-list .panel .panel-heading.right {
+    border-right-width: 0;
+    /*Panel-heading border radius*/
+    border-top-left-radius:0;
+    right: 16px;
+}
+.comment-list .panel .panel-heading .panel-body {
+    padding-top: 6px;
+}
+.comment-list figcaption {
+    /*For wrapping text in thumbnail*/
+    word-wrap: break-word;
+}
+
+.comment-list .comment-post {
+    margin-top: 6px;
+}
+
+.reactie-reageer-button {
+    margin-bottom: 15px;
+}

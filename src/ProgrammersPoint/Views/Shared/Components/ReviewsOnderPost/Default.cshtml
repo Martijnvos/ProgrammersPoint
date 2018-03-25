@@ -1,0 +1,54 @@
+﻿@using System.Linq
+@using ProgrammersPoint.ViewModels.Review
+
+@model ReviewOnderPostViewModel
+
+@foreach (Review review in Model.ReviewLijst)
+{
+    <div class="tab-panel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#review-@review.ReviewId" aria-controls="review" role="tab" data-toggle="tab">Review</a></li>
+            <li role="presentation"><a href="#reacties-@review.ReviewId" aria-controls="reacties" role="tab" data-toggle="tab">Reacties</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="review-@review.ReviewId">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="ReviewWaardering" asp-action="InsertOrUpdateReviewWaardering" asp-route-postId="@review.PostId"
+                       asp-route-reviewId="@review.ReviewId" asp-route-upvote="false" asp-route-downvote="false" asp-route-report="true" 
+                       class="btn btn-danger pull-right">Report</a>
+                    <a asp-controller="Review" asp-action="PasReviewAan" asp-route-postId="@review.PostId"
+                       asp-route-reviewId="@review.ReviewId" class="review-aanpassen-button btn btn-primary pull-right">Pas aan</a>
+                }
+
+                <h4>@review.Titel</h4>
+                <p>@review.Reviewtekst</p>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="image-link-upvote" asp-controller="ReviewWaardering" asp-action="InsertOrUpdateReviewWaardering" asp-route-postId="@review.PostId"
+                       asp-route-reviewId="@review.ReviewId" asp-route-upvote="true" asp-route-downvote="false" asp-route-report="false">
+                        <img class="rating-upvote" src="/images/thumb-up.svg"/>
+                    </a>
+                    <span class="rating-upvote-label">@Model.ReviewWaarderingLijst.Count(x => (x.ReviewId == review.ReviewId) && x.Upvote)</span>
+
+                    <a class="image-link-downvote" asp-controller="ReviewWaardering" asp-action="InsertOrUpdateReviewWaardering" asp-route-postId="@review.PostId"
+                       asp-route-reviewId="@review.ReviewId" asp-route-upvote="false" asp-route-downvote="true" asp-route-report="false">
+                        <img class="rating-downvote" src="/images/dislike-thumb.svg"/>
+                    </a>
+                    <span class="rating-downvote-label">@Model.ReviewWaarderingLijst.Count(x => (x.ReviewId == review.ReviewId) && x.Downvote)</span>
+                }
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="reacties-@review.ReviewId">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-primary pull-right reactie-reageer-button" asp-controller="Reactie" asp-action="ReageerOpReview" asp-route-postId="@review.PostId"
+                       asp-route-reviewId="@review.ReviewId">Reageer</a>
+                }
+                @await Component.InvokeAsync("ReactiesOpReview", review.ReviewId)
+            </div>
+        </div>
+    </div>
+}

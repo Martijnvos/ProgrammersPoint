@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Instellingen";
+}
+
+<h1>Instellingen</h1>
+
+@if (User.HasClaim("Beheerder", "true"))
+{
+    <h3 class="hoofdkleur-text">Content</h3>
+    <a asp-controller="Instellingen" asp-action="ScheldwoordenFilter" class="btn btn-primary">Beheer scheldwoordenfilter</a>
+    <a asp-controller="Categorie" asp-action="Index" class="btn btn-primary categorie-aanpassen-button">Pas categorieën aan</a>
+
+    <h3 class="hoofdkleur-text">Gebruikers</h3>
+    <a asp-controller="Instellingen" asp-action="Gebruikerbeheer" class="btn btn-primary">Beheer gebruikers</a>
+}
+
+<h3 class="hoofdkleur-text">Account</h3>
+<a asp-controller="Instellingen" asp-action="VerwijderGebruiker" asp-route-gebruikersnaam="@User.Identity.Name" class="btn btn-danger">Verwijder account</a>

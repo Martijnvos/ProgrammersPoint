@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Log in";
+}
+
+@model  LogInViewModel
+
+<div class="container registratie-login-container">
+    <div class="row">
+
+        <div class="registreer-gebruiker col-lg-6">
+            <h2>Heeft u nog geen account?</h2>
+            <p>Registreer als nieuwe gebruiker</p>
+            
+            <div asp-validation-summary="All"></div>
+            
+            <form asp-controller="Account" asp-action="RegistreerGebruiker" asp-antiforgery="true">
+                <label asp-for="Registreer.Gebruikersnaam"></label> <br />
+                <input class="form-control gebruikersnaam-row" asp-for="Registreer.Gebruikersnaam" type="text" placeholder="Voer uw gebruikersnaam in"> <br />
+                <span asp-validation-for="Registreer.Gebruikersnaam"></span>
+
+                <label asp-for="Registreer.Wachtwoord"></label> <br />
+                <input class="form-control wachtwoord-row" asp-for="Registreer.Wachtwoord" type="password" placeholder="Voer wachtwoord in"> <br />
+                <span asp-validation-for="Registreer.Wachtwoord"></span>
+                
+                <label asp-for="Registreer.ConfirmatieWachtwoord"></label> <br />
+                <input class="form-control wachtwoord-row" asp-for="Registreer.ConfirmatieWachtwoord" type="password" placeholder="Bevestig wachtwoord"> <br />
+                <span asp-validation-for="Registreer.ConfirmatieWachtwoord"></span>
+
+                <label asp-for="Registreer.Emailadres"></label> <br />
+                <input class="form-control emailadres-row" asp-for="Registreer.Emailadres" type="email" placeholder="Voer emailadres in"> <br />
+                <span asp-validation-for="Registreer.Emailadres"></span>
+
+                <button class="btn btn-primary" type="submit">Maak account aan</button>
+            </form>
+
+
+        </div> <!-- Einde registreer-gebruiker row -->
+
+        <div class="log-gebruiker-in col-lg-6">
+            <h2>Log in</h2>
+            <p>Heeft u al een account? Log hier in</p>
+            <div asp-validation-summary="All"></div>
+            
+            <form asp-controller="Account" asp-action="LogGebruikerIn" asp-antiforgery="true">
+                <label asp-for="LogIn.Gebruikersnaam"></label> <br />
+                <input class="form-control gebruikersnaam-row" asp-for="LogIn.Gebruikersnaam" type="text" placeholder="Voer uw gebruikersnaam in"> <br />
+                <span asp-validation-for="LogIn.Gebruikersnaam"></span>
+
+                <label asp-for="LogIn.Wachtwoord"></label> <br />
+                <input class="form-control wachtwoord-row" asp-for="LogIn.Wachtwoord" type="password" placeholder="Voer wachtwoord in"> <br />
+                <span asp-validation-for="LogIn.Wachtwoord"></span>
+
+                <button class="btn btn-primary" type="submit">Log in</button>
+            </form>
+
+        </div> <!-- Einde log-gebruiker-in row-->
+
+    </div> <!-- Einde hoofdrow -->
+</div>

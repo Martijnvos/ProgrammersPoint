@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Scheldwoordenfilter";
+}
+@using System.Collections.Generic
+@model List<Scheldwoord>
+
+<div class="container">
+    <a asp-controller="Instellingen" asp-action="VoegScheldwoordToe" class="btn btn-primary pull-right">Scheldwoord toevoegen</a>
+    <h3>Huidige scheldwoordenfilter</h3>
+    @if (Model != null)
+    {
+        foreach (Scheldwoord scheldwoord in Model)
+        {
+            <hr/>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Naam: @scheldwoord.Woord</p>
+                    <p>ID: @scheldwoord.ScheldwoordId</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <a class="scheldwoord-aanpassen-button btn btn-primary pull-right" asp-controller="Instellingen" asp-action="PasScheldwoordAan" asp-route-aanTePassenScheldwoord="@scheldwoord.Woord">Pas aan</a>
+                    </div>
+                    <div class="row">
+                        <a class="verwijder-scheldwoord-button btn btn-danger pull-right" asp-controller="Instellingen" asp-action="VerwijderScheldwoord" asp-route-teVerwijderenScheldwoord="@scheldwoord.Woord">Verwijder</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+</div>
