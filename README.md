@@ -11,7 +11,7 @@ ProgrammersPoint is built to be a safe place for everyone. In order to safeguard
 **In short:** ProgrammersPoint is a platform on which everyone can learn from eachother and contribute to a community of coders.
 
 ## Features  
-Features are split up into several categories denoted by the following emojis:
+Features are split up into several categories denoted by the following emojis:  
 :eyes: denotes a visual item / something uneditable  
 :pencil2: denotes an action that changes the state of ProgrammersPoint in one way or another
 
