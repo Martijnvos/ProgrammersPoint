@@ -10,34 +10,38 @@ ProgrammersPoint is built to be a safe place for everyone. In order to safeguard
 
 **In short:** ProgrammersPoint is a platform on which everyone can learn from eachother and contribute to a community of coders.
 
-## Features
+## Features  
+Features are split up into several categories denoted by the following emojis:
+:eyes: denotes a visual item / something uneditable  
+:pencil2: denotes an action that changes the state of ProgrammersPoint in one way or another
+
 ProgrammersPoint has the following features for a site visitor that's not logged in:
-- See all posts placed by the admins
-- Read corresponding reviews written by users of ProgrammersPoint
-- Read reactions to the particular topic
-- Check out the different categories created
+- :eyes: See all posts placed by the admins
+- :eyes: Read corresponding reviews written by users of ProgrammersPoint
+- :eyes: Read reactions to the particular topic
+- :eyes: Check out the different categories created
 
 As a logged in user you are able to:
 - Do everything stated above
-- Write a review on a particular post
-- Write a reaction on a particular post
-- Write a reaction to someone elses reaction (recursive reactions)
-- Upvote and downvote reviews (only once per item, as it should be)
-- Remove your account
-- Report people for inappropriate language or behaviour
-- Receive a Chrome notification when a new post goes live
-- View a 'suggested feed' on the homepage after having read a certain amount of posts
+- :pencil2: Write a review on a particular post
+- :pencil2: Write a reaction on a particular post
+- :pencil2: Write a reaction to someone elses reaction (recursive reactions)
+- :pencil2: Upvote and downvote reviews (only once per item, as it should be)
+- :pencil2: Remove your account
+- :pencil2: Report people for inappropriate language or behaviour
+- :eyes: Receive a Chrome notification when a new post goes live
+- :eyes: View a 'suggested feed' on the homepage after having read a certain amount of posts
 
 If you have admin privileges you are able to:
 - Do everything stated above
-- Add posts
-- Remove posts
-- Have insight into the user base and their privileges
-- Change the privileges of a user
-- Add to the curse word filter
-- Remove words from the curse word filter
-- Remove a category
-- Add a category
+- :pencil2: Add posts
+- :pencil2: Remove posts
+- :eyes: Have insight into the user base and their privileges
+- :pencil2: Change the privileges of a user
+- :pencil2: Add to the curse word filter
+- :pencil2: Remove words from the curse word filter
+- :pencil2: Remove a category
+- :pencil2: Add a category
 
 ## Gallery
 **Home Screen**                           | **Home screen when logged in as admin**  
