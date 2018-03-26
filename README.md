@@ -39,8 +39,29 @@ If you have admin privileges you are able to:
 - Remove a category
 - Add a category
 
+## Gallery
+**Home Screen**                           | **Home screen when logged in as admin**  
+:----------------------------------------:|:----------------------------------------------------:
+![ProgrammersPoint home](images/home.png) | ![ProgrammersPoint home login](images/home_admin.png)  
+
+**Posts screen**                            | **Posts screen when logged in as admin**  
+:------------------------------------------:|:------------------------------------------------------:
+![ProgrammersPoint posts](images/posts.png) | ![ProgrammersPoint posts login](images/posts_admin.png)  
+
+**Create Reaction Screen**                                 | **Reaction Chain**  
+:---------------------------------------------------------:|:------------------------------------------------------------:
+![ProgrammersPoint reaction creation](images/reaction.png) | ![ProgrammersPoint reaction chain](images/reaction_chain.png)  
+
+**Create Review Screen**                                   | **Review screen when logged in as admin**
+:---------------------------------------------------------:|:----------------------------------------------------------:
+![ProgrammersPoint review creation](images/add_review.png) | ![ProgrammersPoint review screen](images/reviews_admin.png)
+
+**Settings Screen**                               | **User screen of settings when logged in as admin**
+:------------------------------------------------:|:----------------------------------------------------------------:
+![ProgrammersPoint settings](images/settings.png) | ![ProgrammersPoint settings users](images/settings_all_users.png)
+
 ## Running the application
-You need to set up your own MSSQL database if you want to run this application yourself.  
+You need to set up your own MSSQL database if you want to run ProgrammersPoint.  
 This repo contains a folder called 'databasescripts' for you to be able to do this correctly.  
 You'll find all of the scripts used for creating the final database used by the full application (it was iteratively build based on assignments in the FUN2 course).  
 Executing all the scripts makes sure you've created all the necessary triggers, stored procedures and tables.  
